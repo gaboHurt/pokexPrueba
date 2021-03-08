@@ -11,7 +11,7 @@ const d = document,
 let pok_fav = [];
 
 //devolvera los 100 primeros pokemon al cargar la pagina
-let pokeAPI = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=30';
+let pokeAPI = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20';
 
 d.addEventListener('DOMContentLoaded', (e) => {
   if (localStorage.getItem('pagPokemon')) {
