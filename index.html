@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container-header">
+        <img src="assets/pokeball.svg" alt="" />
+        <h1>Pokedex</h1>
+      </div>
+    </header>
+
+    <nav>
+      <a href="v/favoritos.html">Favoritos</a>
+    </nav>
+
+    <div class="links"></div>
+
+    <div class="loader">
+      <img src="assets/three-dots.svg" alt="Cargando..." />
+    </div>
+
+    <main class="pokemon-list grid-fluid"></main>
+
+    <template id="pokemon-template">
+      <figure class="pokemon">
+        <img src="" alt="" class="pokemon-img" />
+        <figcaption class="pokemon-name">
+          <a href=""></a>
+          <button
+            class="btn-pokemon-fav"
+            data-name
+            data-url
+            data-img=""
+            data-id
+            data-type
+            name="favorito"
+          >
+            🤍
+          </button>
+        </figcaption>
+      </figure>
+    </template>
+
+    <footer>
+      <div class="container-footer">
+        <p>💖 Gracias por tu visita 💖</p>
+        <p>🔥 Esta es una página de prueba para aprender JS 🔥</p>
+      </div>
+    </footer>
+
+    <script src="js/app.js" type="module"></script>
+  </body>
+</html>
