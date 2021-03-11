@@ -229,3 +229,8 @@ footer.visible {
     justify-content: space-evenly;
   }
 }
+@media screen and (max-width: 260px) {
+  .btn-buscar {
+    margin-top: 0.5rem;
+  }
+}
