@@ -15,8 +15,21 @@
   <body>
     <header>
       <div class="container-header">
-        <img src="assets/pokeball.svg" alt="" />
-        <h1>Pokedex</h1>
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/pokeball.svg" alt="pokeball" />
+          </a>
+          <h1>Pokedex</h1>
+        </div>
+        <form action="" class="form-pokemon">
+          <input
+            type="text"
+            name="input-pokemon"
+            placeholder="Nombre o ID Pokémon"
+            class="input-pokemon"
+          />
+          <input type="submit" value="🔍" class="btn-buscar" />
+        </form>
       </div>
     </header>
 
@@ -26,11 +39,11 @@
 
     <div class="links"></div>
 
+    <main class="pokemon-list grid-fluid"></main>
+
     <div class="loader">
       <img src="assets/three-dots.svg" alt="Cargando..." />
     </div>
-
-    <main class="pokemon-list grid-fluid"></main>
 
     <template id="pokemon-template">
       <figure class="pokemon">
@@ -62,3 +75,4 @@
     <script src="js/app.js" type="module"></script>
   </body>
 </html>
+
