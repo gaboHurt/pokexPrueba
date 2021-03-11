@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex - Favoritos</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container-header">
+        <div class="logo">
+          <a href="../i">
+            <img src="../assets/pokeball.svg" alt="pokeball" />
+          </a>
+          <h1>Pokedex</h1>
+        </div>
+        <form action="" class="form-pokemon">
+          <input
+            type="text"
+            name="input-pokemon"
+            placeholder="Nombre o ID Pokémo"
+            class="input-pokemon"
+          />
+          <input type="submit" value="🔍" class="btn-buscar" />
+        </form>
+      </div>
+    </header>
+
+    <nav>
+      <a href="../index.html">Inicio</a>
+    </nav>
+
+    <div class="loader">
+      <img src="../assets/three-dots.svg" alt="Cargando..." />
+    </div>
+
+    <main class="pokemon-list grid-fluid"></main>
+
+    <template id="pokemon-fav-template">
+      <figure class="pokemon pokemon-fav">
+        <img src="" alt="" class="pokemon-img pokemon-fav-img" />
+        <figcaption class="pokemon-name pokemon-fav-name">
+          <a href=""></a>
+          <button
+            class="btn-pokemon-fav"
+            data-name
+            data-url
+            data-img
+            data-id
+            data-type
+          >
+            🤍
+          </button>
+        </figcaption>
+      </figure>
+    </template>
+
+    <footer>
+      <div class="container-footer">
+        <p>💖 Gracias por tu visita 💖</p>
+        <p>🔥 Esta es una página de prueba para aprender JS 🔥</p>
+      </div>
+    </footer>
+
+    <script src="../js/favoritos.js" type="module"></script>
+  </body>
+</html>
