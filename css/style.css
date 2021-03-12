@@ -10,6 +10,13 @@ body {
   margin: 0;
   font-family: 'RocknRoll One', sans-serif;
 }
+.container {
+  width: 100%;
+  transition: all 0.1s ease-in-out;
+}
+.modal-filter {
+  filter: blur(3px);
+}
 
 header {
   position: sticky;
