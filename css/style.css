@@ -231,6 +231,9 @@ footer.visible {
     flex-direction: column;
     justify-content: space-evenly;
   }
+  .btn-buscar {
+    margin-top: 0.5rem;
+  }
 }
 @media screen and (max-width: 260px) {
   .btn-buscar {
