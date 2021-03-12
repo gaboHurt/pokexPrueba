@@ -8,6 +8,7 @@ const d = document,
   $fragment = d.createDocumentFragment(),
   $footer = d.querySelector('footer');
 let pok_fav = [];
+let breakpoint = window.matchMedia('(max-width:680px)');
 
 //devolvera los 100 primeros pokemon al cargar la pagina
 let offset = 0,
@@ -25,6 +26,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   }
   btn_pokemonFavorito(pok_fav);
 });
+
 d.addEventListener('submit', (e) => {
   if (e.target.matches('.form-pokemon')) {
     e.preventDefault();
@@ -38,6 +40,16 @@ d.addEventListener('submit', (e) => {
     e.target['input-pokemon'].value = '';
   }
 });
+
+//Funcion para dispositivos moviles
+d.addEventListener('click', (e) => {
+  if (e.target.matches('.links a')) {
+    e.preventDefault();
+    $main.innerHTML = '';
+    offset = offset + limit;
+    loadPokemon();
+  }
+})
 
 //al momento de recargar el scrollTop pasara a 0
 window.addEventListener('unload', (e) => {
@@ -90,14 +102,19 @@ const loadPokemon = async () => {
         $fragment.append($clonError);
       }
     }
-
+    
+   
     $main.append($fragment);
+    
+    breakpoint.addListener(responsive);
+    responsive(breakpoint, data.previous, data.next);
+    
     $loader.classList.remove('visible');
     $footer.classList.add('visible');
   } catch (err) {
     console.log(err);
     let msg = err.statusText || 'Ocurrió un error';
-    $main.innerHTML = `<h2>Error ${error.status}: ${msg}</h2>`;
+    $main.innerHTML = `<h2>Error ${err.status}: ${msg}</h2>`;
     $loader.classList.remove('visible');
     $footer.classList.add('visible');
   }
@@ -126,4 +143,16 @@ const showPokemon = (pokemon, url) => {
   pintarTipoPokemon(pokemon.type[0].type.name, $clonePokemon);
 
   $fragment.append($clonePokemon);
+};
+
+const responsive = (e, dataprevious, datanext) => {
+  if (e.matches) {
+    let $prevLink = '',
+      $nextLink = '';
+    $prevLink = dataprevious ? `<a href="${dataprevious}">⏪</a>` : '';
+    $nextLink = datanext ? `<a href="${datanext}">⏩</a>` : '';
+    $links.innerHTML = $prevLink + '' + $nextLink;
+  } else {
+    $links.innerHTML = '';
+  }
 };
