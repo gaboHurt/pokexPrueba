@@ -1,4 +1,6 @@
 import btn_pokemonFavorito from './btn-favorito.js';
+import formPokemon from './form.js';
+import cerrarModal from './modal.js';
 import pintarTiposPokemon from './pintarTiposPokemon.js';
 
 const d = document,
@@ -20,21 +22,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
   }
   mostrarPokemon(pokemonListFav);
   btn_pokemonFavorito(pokemonListFav);
+  formPokemon();
+  cerrarModal();
 });
 
-d.addEventListener('submit', (e) => {
-  if (e.target.matches('.form-pokemon')) {
-    e.preventDefault();
-    if (e.target['input-pokemon'].value.trim() === '') {
-      return;
-    }
-    console.log('click');
-    location.href = `./pokemon.html?idName=${e.target[
-      'input-pokemon'
-    ].value.toLowerCase()}`;
-    e.target['input-pokemon'].value = '';
-  }
-});
 
 const mostrarPokemon = (pokemonListFav) => {
   $loader.classList.add('visible');
