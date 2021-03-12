@@ -13,25 +13,6 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <header>
-      <div class="container-header">
-        <div class="logo">
-          <a href="../index.html">
-            <img src="../assets/pokeball.svg" alt="pokeball" />
-          </a>
-          <h1>Pokedex</h1>
-        </div>
-        <form action="" class="form-pokemon">
-          <input
-            type="text"
-            name="input-pokemon"
-            placeholder="Nombre o ID Pokémon"
-            class="input-pokemon"
-          />
-          <input type="submit" value="🔍" class="btn-buscar" />
-        </form>
-      </div>
-    </header>
     
     <div class="modal">
       <div class="modal-info">
@@ -40,41 +21,63 @@
       </div>
     </div>
 
-    <nav>
-      <a href="../index.html">Inicio</a>
-    </nav>
+    <div class="container">
+      <header>
+        <div class="container-header">
+          <div class="logo">
+            <a href="../index.html">
+              <img src="../assets/pokeball.svg" alt="pokeball" />
+            </a>
+            <h1>Pokedex</h1>
+          </div>
+          <form action="" class="form-pokemon">
+            <input
+              type="text"
+              name="input-pokemon"
+              placeholder="Nombre o ID Pokémo"
+              class="input-pokemon"
+            />
+            <input type="submit" value="🔍" class="btn-buscar" />
+          </form>
+        </div>
+      </header>
 
-    <div class="loader">
-      <img src="../assets/three-dots.svg" alt="Cargando..." />
-    </div>
+      <nav>
+        <a href="../index.html">Inicio</a>
+      </nav>
 
-    <main class="pokemon-list grid-fluid"></main>
-
-    <template id="pokemon-fav-template">
-      <figure class="pokemon pokemon-fav">
-        <img src="" alt="" class="pokemon-img pokemon-fav-img" />
-        <figcaption class="pokemon-name pokemon-fav-name">
-          <a href=""></a>
-          <button
-            class="btn-pokemon-fav"
-            data-name
-            data-url
-            data-img
-            data-id
-            data-type
-          >
-            🤍
-          </button>
-        </figcaption>
-      </figure>
-    </template>
-
-    <footer>
-      <div class="container-footer">
-        <p>💖 Gracias por tu visita 💖</p>
-        <p>🔥 Esta es una página de prueba para aprender JS 🔥</p>
+      <div class="loader">
+        <img src="../assets/three-dots.svg" alt="Cargando..." />
       </div>
-    </footer>
+
+      <main class="pokemon-list grid-fluid"></main>
+
+      <template id="pokemon-fav-template">
+        <figure class="pokemon pokemon-fav">
+          <img src="" alt="" class="pokemon-img pokemon-fav-img" />
+          <figcaption class="pokemon-name pokemon-fav-name">
+            <a href=""></a>
+            <button
+              class="btn-pokemon-fav"
+              data-name
+              data-url
+              data-img
+              data-id
+              data-type
+            >
+              🤍
+            </button>
+          </figcaption>
+        </figure>
+      </template>
+
+      <footer>
+        <div class="container-footer">
+          <p>💖 Gracias por tu visita 💖</p>
+          <p>🔥 Esta es una página de prueba para aprender JS 🔥</p>
+        </div>
+      </footer>
+    </div>
 
     <script src="../js/favoritos.js" type="module"></script>
   </body>
