@@ -45,6 +45,67 @@ header img {
   height: 50px;
 }
 
+.modal {
+  width: 0%;
+  height: 0;
+  background-color: #3636364d;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  bottom: 50%;
+  z-index: 20000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.15s ease-out;
+}
+
+.modal-info {
+  position: relative;
+  width: 50%;
+  height: 40vh;
+  padding: 0 0.5rem;
+  background-color: #fff;
+  border: 5px dashed #ff3838;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgb(44, 44, 44);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.btn-cerrar {
+  position: absolute;
+  top: -20px;
+  right: -15px;
+  border: 2px solid #363636;
+  outline: none;
+  background-color: #ff3838;
+  color: #f7f7f7;
+  padding: 0.5rem 0.8rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  box-shadow: 1px 5px 10px rgb(44, 44, 44);
+  transition: all 0.3s ease-out;
+}
+.btn-cerrar:hover {
+  background-color: rgb(189, 0, 0);
+  transform: scale(1.03);
+}
+.modal.active {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  visibility: visible;
+  opacity: 1;
+}
+
 .input-pokemon {
   border-radius: 5px;
   border: none;
