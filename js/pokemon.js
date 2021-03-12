@@ -1,3 +1,6 @@
+import formPokemon from './form.js';
+import cerrarModal from './modal.js';
+
 const d = document,
   search = new URLSearchParams(window.location.search),
   idName_param = search.get('idName'),
@@ -29,21 +32,8 @@ const d = document,
 
 d.addEventListener('DOMContentLoaded', (e) => {
   fetchData(`https://pokeapi.co/api/v2/pokemon/${idName_param}`);
-});
-
-d.addEventListener('submit', (e) => {
-  if (e.target.matches('.form-pokemon')) {
-    e.preventDefault();
-    if (e.target['input-pokemon'].value.trim() === '') {
-      return;
-    }
-    console.log('click');
-    fetchData(
-      `https://pokeapi.co/api/v2/pokemon/${e.target[
-        'input-pokemon'
-      ].value.toLowerCase()}`
-    );
-  }
+  formPokemon();
+  cerrarModal();
 });
 
 const fetchData = async (url) => {
