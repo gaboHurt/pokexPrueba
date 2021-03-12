@@ -27,7 +27,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   }
   btn_pokemonFavorito(pok_fav);
 });
-s
+
 d.addEventListener('submit', (e) => {
   if (e.target.matches('.form-pokemon')) {
     e.preventDefault();
