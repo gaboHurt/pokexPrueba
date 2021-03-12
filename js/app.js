@@ -6,7 +6,7 @@ const d = document,
   $templatePok = d.getElementById('pokemon-template').content,
   $loader = d.querySelector('.loader'),
   $fragment = d.createDocumentFragment(),
-  $links = d.querySelector('.links'),
+  $links = d.querySelectorAll('.links'),
   $footer = d.querySelector('footer');
 let pok_fav = [];
 let breakpoint = window.matchMedia('(max-width:680px)');
@@ -47,27 +47,24 @@ d.addEventListener('click', (e) => {
     e.preventDefault();
     $main.innerHTML = '';
     offset = offset + limit;
+    d.documentElement.scrollTop = 0;
     loadPokemon();
   }
 });
 
-//al momento de recargar el scrollTop pasara a 0
-window.addEventListener('unload', (e) => {
-  d.documentElement.scrollTop = 0;
-});
-
-window.addEventListener('scroll', (e) => {
-  const { scrollTop, clientHeight, scrollHeight } = d.documentElement;
-  if (scrollTop + clientHeight >= scrollHeight) {
-    offset = offset + limit;
-    loadPokemon();
-  }
-});
+// window.addEventListener('scroll', (e) => {
+//   const { scrollTop, clientHeight, scrollHeight } = d.documentElement;
+//   if (scrollTop + clientHeight >= scrollHeight) {
+//     offset = offset + limit;
+//     loadPokemon();
+//   }
+// });
 
 //Obtener los datos desde la pokeapi
 const loadPokemon = async () => {
   $loader.classList.add('visible');
   $footer.classList.remove('visible');
+  Object.values($links).forEach((el) => (el.innerHTML = ''));
   try {
     let res = await fetch(`${pokeAPI}/?offset=${offset}&limit=${limit}`);
     if (!res.ok) throw { status: res.status, statusText: res.statusText };
@@ -104,8 +101,8 @@ const loadPokemon = async () => {
     }
 
     $main.append($fragment);
-    breakpoint.addListener(responsive);
-    responsive(breakpoint, data.previous, data.next);
+
+    mostrarPaginacion(data.previous, data.next);
 
     $loader.classList.remove('visible');
     $footer.classList.add('visible');
@@ -143,14 +140,12 @@ const showPokemon = (pokemon, url) => {
   $fragment.append($clonePokemon);
 };
 
-const responsive = (e, dataprevious, datanext) => {
-  if (e.matches) {
-    let $prevLink = '',
-      $nextLink = '';
-    $prevLink = dataprevious ? `<a href="${dataprevious}">⏪</a>` : '';
-    $nextLink = datanext ? `<a href="${datanext}">⏩</a>` : '';
-    $links.innerHTML = $prevLink + '' + $nextLink;
-  } else {
-    $links.innerHTML = '';
-  }
+const mostrarPaginacion = (dataprevious, datanext) => {
+  let $prevLink = '',
+    $nextLink = '';
+  $prevLink = dataprevious ? `<a href="${dataprevious}">⏪</a>` : '';
+  $nextLink = datanext ? `<a href="${datanext}">⏩</a>` : '';
+  Object.values($links).forEach((el) => {
+    el.innerHTML = $prevLink + '' + $nextLink;
+  });
 };
