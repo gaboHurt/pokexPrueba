@@ -12,18 +12,13 @@ const d = document,
   $links = d.querySelectorAll('.links'),
   $footer = d.querySelector('footer');
 let pok_fav = [];
-let breakpoint = window.matchMedia('(max-width:680px)');
 
 //devolvera los 100 primeros pokemon al cargar la pagina
-let offset = 0,
-  limit = 20,
-  pokeAPI = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
+let pokeAPI = `https://pokeapi.co/api/v2/pokemon/?offset=$0&limit=20`;
 
 d.addEventListener('DOMContentLoaded', (e) => {
-  if (localStorage.getItem('poke-offset')) {
-    offset = parseInt(localStorage.getItem('poke-offset'));
-    limit = 20;
-    pokeAPI = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
+    if (localStorage.getItem('pagPokemon')) {
+    pokeAPI = localStorage.getItem('pagPokemon');
     loadPokemon();
   } else {
     loadPokemon();
@@ -56,12 +51,11 @@ d.addEventListener('submit', (e) => {
 
 d.addEventListener('click', (e) => {
   if (e.target.matches('.links a')) {
-    e.preventDefault();
+     e.preventDefault();
     $main.innerHTML = '';
-    limit = 20;
-    offset = offset + limit;
-    localStorage.setItem('poke-offset', offset);
-    pokeAPI = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
+    let url = e.target.getAttribute('href');
+    localStorage.setItem('pagPokemon', url);
+    pokeAPI = url;
     d.documentElement.scrollTop = 0;
     loadPokemon();
   }
