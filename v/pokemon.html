@@ -13,26 +13,6 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <header>
-      <div class="container-header">
-        <div class="logo">
-          <a href="../index.html">
-            <img src="../assets/pokeball.svg" alt="" />
-          </a>
-          <h1>Pokedex</h1>
-        </div>
-        <form action="" class="form-pokemon">
-          <input
-            type="text"
-            name="input-pokemon"
-            placeholder="Nombre o ID Pokémo"
-            class="input-pokemon"
-          />
-          <input type="submit" value="🔍" class="btn-buscar" />
-        </form>
-      </div>
-    </header>
-    
     <div class="modal">
       <div class="modal-info">
         <button class="btn-cerrar">✖</button>
@@ -40,57 +20,79 @@
       </div>
     </div>
 
-    <nav class="menu">
-      <a href="../index.html">Inicio</a>
-      <a href="./favoritos.html">Favoritos</a>
-    </nav>
-
-    <div class="loader">
-      <img src="../assets/three-dots.svg" alt="Cargando..." />
-    </div>
-
-    <main class="grid-fluid"></main>
-
-    <template id="pok-template">
-      <div class="pokemon-container">
-        <div class="pok-title">
-          <h2 class="pok-name"></h2>
+    <div class="container">
+      <header>
+        <div class="container-header">
+          <div class="logo">
+            <a href="../index.html">
+              <img src="../assets/pokeball.svg" alt="" />
+            </a>
+            <h1>Pokedex</h1>
+          </div>
+          <form action="" class="form-pokemon">
+            <input
+              type="text"
+              name="input-pokemon"
+              placeholder="Nombre o ID Pokémo"
+              class="input-pokemon"
+            />
+            <input type="submit" value="🔍" class="btn-buscar" />
+          </form>
         </div>
-        <div class="pok-img-container">
-          <figure>
-            <img src="" alt="" class="pok-img-normal" />
-            <figcaption>Forma normal</figcaption>
-          </figure>
-          <figure>
-            <img src="" alt="" class="pok-img-shiny" />
-            <figcaption>Forma shiny</figcaption>
-          </figure>
-        </div>
-        <div class="pok-info">
-          <table>
-            <thead>
+      </header>
+
+      <nav class="menu">
+        <a href="../index.html">Inicio</a>
+        <a href="./favoritos.html">Favoritos</a>
+      </nav>
+
+      <div class="loader">
+        <img src="../assets/three-dots.svg" alt="Cargando..." />
+      </div>
+
+      <main class="grid-fluid"></main>
+
+      <template id="pok-template">
+        <div class="pokemon-container">
+          <div class="pok-title">
+            <h2 class="pok-name"></h2>
+          </div>
+          <div class="pok-img-container">
+            <figure>
+              <img src="" alt="" class="pok-img-normal" />
+              <figcaption>Forma normal</figcaption>
+            </figure>
+            <figure>
+              <img src="" alt="" class="pok-img-shiny" />
+              <figcaption>Forma shiny</figcaption>
+            </figure>
+          </div>
+          <div class="pok-info">
+            <table>
+              <thead>
+                <tr>
+                  <th>Habilidades</th>
+                  <th>Tipos</th>
+                  <th>Stats</th>
+                </tr>
+              </thead>
               <tr>
-                <th>Habilidades</th>
-                <th>Tipos</th>
-                <th>Stats</th>
+                <td><ul class="pok-info-ul pok-abilities"></ul></td>
+                <td><ul class="pok-info-ul pok-types"></ul></td>
+                <td><ul class="pok-info-ul pok-stats"></ul></td>
               </tr>
-            </thead>
-            <tr>
-              <td><ul class="pok-info-ul pok-abilities"></ul></td>
-              <td><ul class="pok-info-ul pok-types"></ul></td>
-              <td><ul class="pok-info-ul pok-stats"></ul></td>
-            </tr>
-          </table>
+            </table>
+          </div>
         </div>
-      </div>
-    </template>
+      </template>
 
-    <footer>
-      <div class="container-footer">
-        <p>💖 Gracias por tu visita 💖</p>
-        <p>🔥 Esta es una página de prueba para aprender JS 🔥</p>
-      </div>
-    </footer>
+      <footer>
+        <div class="container-footer">
+          <p>💖 Gracias por tu visita 💖</p>
+          <p>🔥 Esta es una página de prueba para aprender JS 🔥</p>
+        </div>
+      </footer>
+    </div>
 
     <script src="../js/pokemon.js" type="module"></script>
   </body>
