@@ -1,5 +1,8 @@
 import btn_pokemonFavorito from './btn-favorito.js';
+import formPokemon from './form.js';
+import cerrarModal from './modal.js';
 import pintarTipoPokemon from './pintarTiposPokemon.js';
+
 
 const d = document,
   $main = d.querySelector('main'),
@@ -14,10 +17,17 @@ let breakpoint = window.matchMedia('(max-width:680px)');
 //devolvera los 100 primeros pokemon al cargar la pagina
 let offset = 0,
   limit = 20,
-  pokeAPI = `https://pokeapi.co/api/v2/pokemon`;
+  pokeAPI = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
 
 d.addEventListener('DOMContentLoaded', (e) => {
-  loadPokemon();
+  if (localStorage.getItem('poke-offset')) {
+    offset = parseInt(localStorage.getItem('poke-offset'));
+    limit = 20;
+    pokeAPI = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
+    loadPokemon();
+  } else {
+    loadPokemon();
+  }
   //Validamos si exiten pokemon favoritos en el localStorage
   if (localStorage.getItem('pokemonFav')) {
     //Convertimos el resultado a formato json y agregamos los pokemon al arreglo
@@ -25,7 +35,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
       pok_fav.push(el);
     });
   }
-  btn_pokemonFavorito(pok_fav);
+  formPokemon();
+  cerrarModal();
 });
 
 d.addEventListener('submit', (e) => {
@@ -46,19 +57,14 @@ d.addEventListener('click', (e) => {
   if (e.target.matches('.links a')) {
     e.preventDefault();
     $main.innerHTML = '';
+    limit = 20;
     offset = offset + limit;
+    localStorage.setItem('poke-offset', offset);
+    pokeAPI = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
     d.documentElement.scrollTop = 0;
     loadPokemon();
   }
 });
-
-// window.addEventListener('scroll', (e) => {
-//   const { scrollTop, clientHeight, scrollHeight } = d.documentElement;
-//   if (scrollTop + clientHeight >= scrollHeight) {
-//     offset = offset + limit;
-//     loadPokemon();
-//   }
-// });
 
 //Obtener los datos desde la pokeapi
 const loadPokemon = async () => {
@@ -66,7 +72,7 @@ const loadPokemon = async () => {
   $footer.classList.remove('visible');
   Object.values($links).forEach((el) => (el.innerHTML = ''));
   try {
-    let res = await fetch(`${pokeAPI}/?offset=${offset}&limit=${limit}`);
+    let res = await fetch(pokeAPI);
     if (!res.ok) throw { status: res.status, statusText: res.statusText };
     let data = await res.json();
     //console.log(data);
