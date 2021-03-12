@@ -35,6 +35,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       pok_fav.push(el);
     });
   }
+  btn_pokemonFavorito(pok_fav);
   formPokemon();
   cerrarModal();
 });
