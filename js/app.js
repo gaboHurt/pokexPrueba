@@ -6,6 +6,7 @@ const d = document,
   $templatePok = d.getElementById('pokemon-template').content,
   $loader = d.querySelector('.loader'),
   $fragment = d.createDocumentFragment(),
+  $links = d.querySelector('.links'),
   $footer = d.querySelector('footer');
 let pok_fav = [];
 let breakpoint = window.matchMedia('(max-width:680px)');
@@ -26,7 +27,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   }
   btn_pokemonFavorito(pok_fav);
 });
-
+s
 d.addEventListener('submit', (e) => {
   if (e.target.matches('.form-pokemon')) {
     e.preventDefault();
@@ -41,7 +42,6 @@ d.addEventListener('submit', (e) => {
   }
 });
 
-//Funcion para dispositivos moviles
 d.addEventListener('click', (e) => {
   if (e.target.matches('.links a')) {
     e.preventDefault();
@@ -49,7 +49,7 @@ d.addEventListener('click', (e) => {
     offset = offset + limit;
     loadPokemon();
   }
-})
+});
 
 //al momento de recargar el scrollTop pasara a 0
 window.addEventListener('unload', (e) => {
@@ -102,13 +102,11 @@ const loadPokemon = async () => {
         $fragment.append($clonError);
       }
     }
-    
-   
+
     $main.append($fragment);
-    
     breakpoint.addListener(responsive);
     responsive(breakpoint, data.previous, data.next);
-    
+
     $loader.classList.remove('visible');
     $footer.classList.add('visible');
   } catch (err) {
